@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<canvas id="myCanvas" width="500px" height="500px"></canvas>
+<br>
+<body>
+<script>
+    function rectangle(width,length){
+        this.width=width;
+        this.length=length;
+        this.setWidth=function(width) {
+            this.width=width;
+        }
+        this.setLength=function(length) {
+            this.length=length;
+        }
+        this.getArea=function (){
+            return this.width*this.length;
+        }
+        this.perimeter=function() {
+            return 2*this.width*this.length
+        }
+        this.drawCanvas=function () {
+            let c = document.getElementById("myCanvas");
+            let ctx = c.getContext("2d");
+            let x=Math.random()*500
+            let y=Math.random()*500
+            ctx.strokeRect(x, y,this.width, this.length)
+        }
+    }
+    let rectangle1=new rectangle(20,50)
+    console.log("Dien tích hình 1 là :" + rectangle1.getArea());
+    console.log("Chu vi hình 1 là :" + rectangle1.perimeter());
+    rectangle1.drawCanvas();
+    rectangle1.setWidth(40)
+    rectangle1.setLength(100)
+    rectangle1.drawCanvas();
+</script>
+</body>
+</html>
